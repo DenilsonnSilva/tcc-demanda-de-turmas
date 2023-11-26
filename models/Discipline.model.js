@@ -14,3 +14,5 @@ const Discipline = sequelize.define(
   },
   { underscored: true }
 );
+
+export default Discipline;

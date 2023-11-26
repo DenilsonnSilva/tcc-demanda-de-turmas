@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../services/database";
 
-const Course = sequelize.define(
-  "Course",
+const Term = sequelize.define(
+  "Term",
   {
     name: {
       type: DataTypes.STRING,
@@ -15,4 +15,4 @@ const Course = sequelize.define(
   { underscored: true }
 );
 
-export default Course;
+export default Term;

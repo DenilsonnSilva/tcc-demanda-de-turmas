@@ -14,3 +14,5 @@ const Teacher = sequelize.define(
   },
   { underscored: true }
 );
+
+export default Teacher;

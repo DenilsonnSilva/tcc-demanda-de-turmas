@@ -14,3 +14,5 @@ const Classroom = sequelize.define(
   },
   { underscored: true }
 );
+
+export default Classroom;
