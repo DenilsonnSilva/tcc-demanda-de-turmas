@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../services/database";
+import sequelize from "../services/database.js";
 
-const Teacher = sequelize.define(
-  "Teacher",
+const Classroom = sequelize.define(
+  "Classroom",
   {
     name: {
       type: DataTypes.STRING,
@@ -15,4 +15,4 @@ const Teacher = sequelize.define(
   { underscored: true }
 );
 
-export default Teacher;
+export default Classroom;

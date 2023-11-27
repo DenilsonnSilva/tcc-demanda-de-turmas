@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 
-import sequelize from "./services/database";
+import sequelize from "./services/database.js";
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.get("/healthz", (req, res) => {
   res.status(200).json({ message: "O servidor está respondendo!" });
 });
 
-sequelize.sync();
+sequelize.sync({ force: false });
 
 app.listen(process.env.PORT, () => {
   console.log(`Running server on port ${process.env.PORT}`);

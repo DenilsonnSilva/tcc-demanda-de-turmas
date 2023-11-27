@@ -1,9 +1,10 @@
-import sequelize from "../services/database";
+import sequelize from "../services/database.js";
 
-import Classroom from "./Classroom.model";
-import Course from "./Course.model";
-import Discipline from "./Discipline.model";
-import Teacher from "./Teacher.model";
+import Classroom from "./classroom.model.js";
+import Course from "./course.model.js";
+import Discipline from "./discipline.model.js";
+import Teacher from "./teacher.model.js";
+import Term from "./term.model.js";
 
 const Class = sequelize.define("Class", {}, { underscored: true });
 
@@ -18,5 +19,8 @@ Discipline.hasMany(Class, { foreignKey: "disciplineId" });
 
 Class.belongsTo(Teacher);
 Teacher.hasMany(Class, { foreignKey: "teacherId" });
+
+Class.belongsTo(Term);
+Term.hasMany(Class, { foreignKey: "termId" });
 
 export default Class;
