@@ -4,9 +4,7 @@ const createClassroom = async (req, res) => {
   try {
     const { name } = req.body;
 
-    const newClassroom = await Classroom.create({
-      name,
-    });
+    const newClassroom = await Classroom.create({ name });
 
     return res.status(200).json(newClassroom);
   } catch (error) {
@@ -50,7 +48,7 @@ const deleteClassroom = async (req, res) => {
   try {
     const { classroomId } = req.params;
 
-    const classroom = await Movie.findByPk(classroomId);
+    const classroom = await Classroom.findByPk(classroomId);
 
     if (classroom) {
       await classroom.destroy();
