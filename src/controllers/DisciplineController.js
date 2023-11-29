@@ -6,7 +6,7 @@ const createDiscipline = async (req, res) => {
 
     const newDiscipline = await Discipline.create({ name });
 
-    return res.status(200).json(newDiscipline);
+    return res.status(201).json(newDiscipline);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });

@@ -6,7 +6,7 @@ const createCourse = async (req, res) => {
 
     const newCourse = await Course.create({ name });
 
-    return res.status(200).json(newCourse);
+    return res.status(201).json(newCourse);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });

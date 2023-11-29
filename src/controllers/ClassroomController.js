@@ -6,7 +6,7 @@ const createClassroom = async (req, res) => {
 
     const newClassroom = await Classroom.create({ name });
 
-    return res.status(200).json(newClassroom);
+    return res.status(201).json(newClassroom);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });

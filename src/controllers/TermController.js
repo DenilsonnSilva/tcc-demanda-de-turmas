@@ -6,7 +6,7 @@ const createTerm = async (req, res) => {
 
     const newTerm = await Term.create({ name });
 
-    return res.status(200).json(newTerm);
+    return res.status(201).json(newTerm);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });
