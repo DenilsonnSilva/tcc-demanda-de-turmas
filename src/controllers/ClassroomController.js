@@ -1,6 +1,6 @@
 import Classroom from "../models/classroom.model";
 
-const createClassroom = async (req, res) => {
+const create = async (req, res) => {
   try {
     const { name } = req.body;
 
@@ -13,7 +13,7 @@ const createClassroom = async (req, res) => {
   }
 };
 
-const readClassroom = async (req, res) => {
+const read = async (req, res) => {
   try {
     const classrooms = await Classroom.findAll();
 
@@ -24,7 +24,7 @@ const readClassroom = async (req, res) => {
   }
 };
 
-const updateClassroom = async (req, res) => {
+const update = async (req, res) => {
   try {
     const { classroomId } = req.params;
     const { name } = req.body;
@@ -44,7 +44,7 @@ const updateClassroom = async (req, res) => {
   }
 };
 
-const deleteClassroom = async (req, res) => {
+const dеlete = async (req, res) => {
   try {
     const { classroomId } = req.params;
 
@@ -63,4 +63,4 @@ const deleteClassroom = async (req, res) => {
   }
 };
 
-export { createClassroom, readClassroom, updateClassroom, deleteClassroom };
+export default { create, read, update, dеlete };

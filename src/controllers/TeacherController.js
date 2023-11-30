@@ -1,6 +1,6 @@
 import Teacher from "../models/teacher.model";
 
-const createTeacher = async (req, res) => {
+const create = async (req, res) => {
   try {
     const { name } = req.body;
 
@@ -13,7 +13,7 @@ const createTeacher = async (req, res) => {
   }
 };
 
-const readTeacher = async (req, res) => {
+const read = async (req, res) => {
   try {
     const teachers = await Teacher.findAll();
 
@@ -24,7 +24,7 @@ const readTeacher = async (req, res) => {
   }
 };
 
-const updateTeacher = async (req, res) => {
+const update = async (req, res) => {
   try {
     const { teacherId } = req.params;
     const { name } = req.body;
@@ -44,7 +44,7 @@ const updateTeacher = async (req, res) => {
   }
 };
 
-const deleteTeacher = async (req, res) => {
+const dеlete = async (req, res) => {
   try {
     const { teacherId } = req.params;
 
@@ -65,4 +65,4 @@ const deleteTeacher = async (req, res) => {
   }
 };
 
-export { createTeacher, readTeacher, updateTeacher, deleteTeacher };
+export default { create, read, update, dеlete };

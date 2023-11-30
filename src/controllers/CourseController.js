@@ -1,6 +1,6 @@
 import Course from "../models/course.model";
 
-const createCourse = async (req, res) => {
+const create = async (req, res) => {
   try {
     const { name } = req.body;
 
@@ -13,7 +13,7 @@ const createCourse = async (req, res) => {
   }
 };
 
-const readCourse = async (req, res) => {
+const read = async (req, res) => {
   try {
     const courses = await Course.findAll();
 
@@ -24,7 +24,7 @@ const readCourse = async (req, res) => {
   }
 };
 
-const updateCourse = async (req, res) => {
+const update = async (req, res) => {
   try {
     const { courseId } = req.params;
     const { name } = req.body;
@@ -44,7 +44,7 @@ const updateCourse = async (req, res) => {
   }
 };
 
-const deleteCourse = async (req, res) => {
+const dеlete = async (req, res) => {
   try {
     const { courseId } = req.params;
 
@@ -63,4 +63,4 @@ const deleteCourse = async (req, res) => {
   }
 };
 
-export { createCourse, readCourse, updateCourse, deleteCourse };
+export default { create, read, update, dеlete };

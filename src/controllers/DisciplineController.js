@@ -1,6 +1,6 @@
 import Discipline from "../models/discipline.model";
 
-const createDiscipline = async (req, res) => {
+const create = async (req, res) => {
   try {
     const { name } = req.body;
 
@@ -13,7 +13,7 @@ const createDiscipline = async (req, res) => {
   }
 };
 
-const readDiscipline = async (req, res) => {
+const read = async (req, res) => {
   try {
     const disciplines = await Discipline.findAll();
 
@@ -24,7 +24,7 @@ const readDiscipline = async (req, res) => {
   }
 };
 
-const updateDiscipline = async (req, res) => {
+const update = async (req, res) => {
   try {
     const { disciplineId } = req.params;
     const { name } = req.body;
@@ -44,7 +44,7 @@ const updateDiscipline = async (req, res) => {
   }
 };
 
-const deleteDiscipline = async (req, res) => {
+const dеlete = async (req, res) => {
   try {
     const { disciplineId } = req.params;
 
@@ -65,4 +65,4 @@ const deleteDiscipline = async (req, res) => {
   }
 };
 
-export { createDiscipline, readDiscipline, updateDiscipline, deleteDiscipline };
+export default { create, read, update, dеlete };

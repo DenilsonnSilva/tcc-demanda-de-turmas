@@ -1,6 +1,6 @@
 import Term from "../models/term.model";
 
-const createTerm = async (req, res) => {
+const create = async (req, res) => {
   try {
     const { name } = req.body;
 
@@ -13,7 +13,7 @@ const createTerm = async (req, res) => {
   }
 };
 
-const readTerm = async (req, res) => {
+const read = async (req, res) => {
   try {
     const terms = await Term.findAll();
 
@@ -24,7 +24,7 @@ const readTerm = async (req, res) => {
   }
 };
 
-const updateTerms = async (req, res) => {
+const update = async (req, res) => {
   try {
     const { termId } = req.params;
     const { name } = req.body;
@@ -44,7 +44,7 @@ const updateTerms = async (req, res) => {
   }
 };
 
-const deleteTerm = async (req, res) => {
+const dеlete = async (req, res) => {
   try {
     const { termId } = req.params;
 
@@ -65,4 +65,4 @@ const deleteTerm = async (req, res) => {
   }
 };
 
-export { createTerm, readTerm, updateTerms, deleteTerm };
+export default { create, read, update, dеlete };

@@ -1,6 +1,6 @@
 import Class from "../models/class.model";
 
-const createClass = async (req, res) => {
+const create = async (req, res) => {
   try {
     const { classroomId, courseId, disciplineId, teacherId, termId } = req.body;
 
@@ -19,7 +19,7 @@ const createClass = async (req, res) => {
   }
 };
 
-const readClass = async (req, res) => {
+const read = async (req, res) => {
   try {
     const classes = await Class.findAll();
 
@@ -30,7 +30,7 @@ const readClass = async (req, res) => {
   }
 };
 
-const updateClass = async (req, res) => {
+const update = async (req, res) => {
   try {
     const { classId } = req.params;
     const { name } = req.body;
@@ -50,7 +50,7 @@ const updateClass = async (req, res) => {
   }
 };
 
-const deleteClass = async (req, res) => {
+const dеlete = async (req, res) => {
   try {
     const { classId } = req.params;
 
@@ -69,4 +69,4 @@ const deleteClass = async (req, res) => {
   }
 };
 
-export { createClass, readClass, updateClass, deleteClass };
+export { create, read, update, dеlete };
