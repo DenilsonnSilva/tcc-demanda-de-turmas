@@ -69,4 +69,4 @@ const dеlete = async (req, res) => {
   }
 };
 
-export { create, read, update, dеlete };
+export default { create, read, update, dеlete };
