@@ -1,6 +1,6 @@
 import { Router } from "express";
-import teacherController from "../controllers/TeacherController";
-import UserAuthentication from "../middlewares/UserAuthentication";
+import teacherController from "../controllers/TeacherController.js";
+import UserAuthentication from "../middlewares/UserAuthentication.js";
 
 const router = Router();
 

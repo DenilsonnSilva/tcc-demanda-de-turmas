@@ -1,6 +1,6 @@
 import { Router } from "express";
-import termController from "../controllers/TermController";
-import UserAuthentication from "../middlewares/UserAuthentication";
+import termController from "../controllers/TermController.js";
+import UserAuthentication from "../middlewares/UserAuthentication.js";
 
 const router = Router();
 

@@ -1,4 +1,4 @@
-import Term from "../models/term.model";
+import Term from "../models/term.model.js";
 
 const create = async (req, res) => {
   try {

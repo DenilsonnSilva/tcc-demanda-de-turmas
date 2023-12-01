@@ -1,4 +1,4 @@
-import Classroom from "../models/classroom.model";
+import Classroom from "../models/classroom.model.js";
 
 const create = async (req, res) => {
   try {
