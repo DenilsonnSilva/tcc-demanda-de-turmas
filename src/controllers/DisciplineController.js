@@ -13,13 +13,30 @@ const create = async (req, res) => {
   }
 };
 
-const read = async (req, res) => {
+const getAll = async (req, res) => {
   try {
     const disciplines = await Discipline.findAll();
 
     res.status(200).json(disciplines);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getOne = async (req, res) => {
+  try {
+    const { disciplineId } = req.params;
+
+    const discipline = await Discipline.findByPk(disciplineId);
+
+    if (discipline) {
+      return res.status(200).json({ discipline });
+    } else {
+      return res.status(404).json({ message: "Disciplina não encontrada." });
+    }
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -65,4 +82,4 @@ const dеlete = async (req, res) => {
   }
 };
 
-export default { create, read, update, dеlete };
+export default { create, getAll, getOne, update, dеlete };

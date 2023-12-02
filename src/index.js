@@ -18,13 +18,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", classesRoutes);
-app.use("/", classroomsRoutes);
-app.use("/", coursesRoutes);
-app.use("/", disciplinesRoutes);
-app.use("/", teachersRoutes);
-app.use("/", termsRoutes);
-app.use("/", usersRoutes);
+app.use(classesRoutes);
+app.use(classroomsRoutes);
+app.use(coursesRoutes);
+app.use(disciplinesRoutes);
+app.use(teachersRoutes);
+app.use(termsRoutes);
+app.use(usersRoutes);
 
 app.get("/healthz", (req, res) => {
   res.status(200).json({ message: "O servidor está respondendo!" });

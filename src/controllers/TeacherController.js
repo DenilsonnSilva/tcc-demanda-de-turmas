@@ -13,13 +13,32 @@ const create = async (req, res) => {
   }
 };
 
-const read = async (req, res) => {
+const getAll = async (req, res) => {
   try {
     const teachers = await Teacher.findAll();
 
     res.status(200).json(teachers);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getOne = async (req, res) => {
+  try {
+    const { teacherId } = req.params;
+
+    const teacher = await Teacher.findByPk(teacherId);
+
+    if (teacher) {
+      return res.status(200).json({ course: teacher });
+    } else {
+      return res.status(404).json({
+        message: "Professor(a) não encontrado(a).",
+      });
+    }
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -36,7 +55,9 @@ const update = async (req, res) => {
 
       return res.status(200).json(teacher);
     } else {
-      return res.status(404).json({ message: "Professor não encontrado." });
+      return res.status(404).json({
+        message: "Professor(a) não encontrado(a).",
+      });
     }
   } catch (error) {
     console.error(error);
@@ -54,10 +75,12 @@ const dеlete = async (req, res) => {
       await teacher.destroy();
 
       return res.status(200).json({
-        message: "Professor deletado com sucesso.",
+        message: "Professor(a) deletado(a) com sucesso.",
       });
     } else {
-      return res.status(404).json({ message: "Professor não encontrado." });
+      return res
+        .status(404)
+        .json({ message: "Professor(a) não encontrado(a)." });
     }
   } catch (error) {
     console.error(error);
@@ -65,4 +88,4 @@ const dеlete = async (req, res) => {
   }
 };
 
-export default { create, read, update, dеlete };
+export default { create, getAll, getOne, update, dеlete };

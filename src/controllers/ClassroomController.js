@@ -13,13 +13,30 @@ const create = async (req, res) => {
   }
 };
 
-const read = async (req, res) => {
+const getAll = async (req, res) => {
   try {
     const classrooms = await Classroom.findAll();
 
     res.status(200).json(classrooms);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getOne = async (req, res) => {
+  try {
+    const { classroomId } = req.params;
+
+    const classroom = await Classroom.findByPk(classroomId);
+
+    if (classroom) {
+      return res.status(200).json({ classroom });
+    } else {
+      return res.status(404).json({ message: "Sala não encontrada." });
+    }
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -63,4 +80,4 @@ const dеlete = async (req, res) => {
   }
 };
 
-export default { create, read, update, dеlete };
+export default { create, getAll, getOne, update, dеlete };

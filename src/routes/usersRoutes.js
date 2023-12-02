@@ -3,7 +3,7 @@ import { logIn, signUp } from "../controllers/UserController.js";
 
 const router = Router();
 
-router.post("/cadastro", signUp);
-router.post("/login", logIn);
+router.post("/api/cadastro", signUp);
+router.post("/api/login", logIn);
 
 export default router;

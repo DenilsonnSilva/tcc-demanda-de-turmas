@@ -13,13 +13,30 @@ const create = async (req, res) => {
   }
 };
 
-const read = async (req, res) => {
+const getAll = async (req, res) => {
   try {
     const courses = await Course.findAll();
 
     res.status(200).json(courses);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getOne = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+
+    const course = await Course.findByPk(courseId);
+
+    if (course) {
+      return res.status(200).json({ course });
+    } else {
+      return res.status(404).json({ message: "Curso não encontrado." });
+    }
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -63,4 +80,4 @@ const dеlete = async (req, res) => {
   }
 };
 
-export default { create, read, update, dеlete };
+export default { create, getAll, getOne, update, dеlete };

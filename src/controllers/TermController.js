@@ -13,13 +13,30 @@ const create = async (req, res) => {
   }
 };
 
-const read = async (req, res) => {
+const getAll = async (req, res) => {
   try {
     const terms = await Term.findAll();
 
     res.status(200).json(terms);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getOne = async (req, res) => {
+  try {
+    const { termId } = req.params;
+
+    const term = await Term.findByPk(termId);
+
+    if (term) {
+      return res.status(200).json({ term });
+    } else {
+      return res.status(404).json({ message: "Período não encontrado." });
+    }
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -65,4 +82,4 @@ const dеlete = async (req, res) => {
   }
 };
 
-export default { create, read, update, dеlete };
+export default { create, getAll, getOne, update, dеlete };

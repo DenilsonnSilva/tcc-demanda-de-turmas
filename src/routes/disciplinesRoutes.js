@@ -4,9 +4,15 @@ import UserAuthentication from "../middlewares/UserAuthentication.js";
 
 const router = Router();
 
-router.get("/disciplinas", UserAuthentication, disciplineController.read);
-router.post("/disciplina", UserAuthentication, disciplineController.create);
-router.put("/disciplina", UserAuthentication, disciplineController.update);
-router.delete("/disciplina", UserAuthentication, disciplineController.dеlete);
+router
+  .route("/api/disciplina")
+  .get(UserAuthentication, disciplineController.getAll)
+  .post(UserAuthentication, disciplineController.create);
+
+router
+  .route("/api/disciplina/:disciplineId")
+  .get(UserAuthentication, disciplineController.getOne)
+  .put(UserAuthentication, disciplineController.update)
+  .delete(UserAuthentication, disciplineController.dеlete);
 
 export default router;
