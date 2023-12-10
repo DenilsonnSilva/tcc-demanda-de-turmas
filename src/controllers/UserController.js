@@ -38,8 +38,8 @@ const logIn = async (req, res) => {
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (isPasswordValid) {
-        const token = jwt.sign({ userId: user.id }, process.env.MY_SECRET, {
-          expiresIn: "1h",
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+          expiresIn: process.env.JWT_EXPIRES_IN,
         });
 
         return res.status(200).json({ message: "Logado com sucesso.", token });

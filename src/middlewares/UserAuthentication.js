@@ -6,7 +6,7 @@ const userAuthentication = (req, res, next) => {
   if (authorizationHeader) {
     const token = authorizationHeader.split(" ")[1];
 
-    jwt.verify(token, process.env.MY_SECRET, (error, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
       if (error) {
         return res.status(401).json({ message: "Token inválido." });
       }
