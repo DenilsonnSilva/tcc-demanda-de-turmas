@@ -20,22 +20,22 @@ const create = async (req, res) => {
 
 const getAvailable = async (req, res) => {
   try {
-    const { students, materials } = req.query;
+    const { estudantes, materiais } = req.query;
 
     const whereClause = {
       students_quantity: {
-        [Op.gte]: students,
+        [Op.gte]: estudantes,
       },
     };
 
-    if (materials === "true") {
+    if (materiais === "true") {
       whereClause.supports_materials = true;
     }
 
     const classrooms = await Classroom.findAll({
       where: whereClause,
     });
-    
+
     res.status(200).json(classrooms);
   } catch (error) {
     console.error(error);
