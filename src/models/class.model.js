@@ -6,21 +6,21 @@ import Discipline from "./discipline.model.js";
 import Teacher from "./teacher.model.js";
 import Term from "./term.model.js";
 
-const Class = sequelize.define("Class", {}, { underscored: true });
+const Class = sequelize.define("class", {}, { underscored: true });
 
-Class.belongsTo(Classroom, { foreignKey: { allowNull: false } });
-Classroom.hasMany(Class, { foreignKey: "classroomId" });
+Classroom.hasMany(Class, { foreignKey: { allowNull: false } });
+Class.belongsTo(Classroom);
 
-Class.belongsTo(Course, { foreignKey: { allowNull: false } });
-Course.hasMany(Class, { foreignKey: "courseId" });
+Course.hasMany(Class, { foreignKey: { allowNull: false } });
+Class.belongsTo(Course);
 
-Class.belongsTo(Discipline, { foreignKey: { allowNull: false } });
-Discipline.hasMany(Class, { foreignKey: "disciplineId" });
+Discipline.hasMany(Class, { foreignKey: { allowNull: false } });
+Class.belongsTo(Discipline);
 
-Class.belongsTo(Teacher, { foreignKey: { allowNull: false } });
-Teacher.hasMany(Class, { foreignKey: "teacherId" });
+Teacher.hasMany(Class, { foreignKey: { allowNull: false } });
+Class.belongsTo(Teacher);
 
-Class.belongsTo(Term, { foreignKey: { allowNull: false } });
-Term.hasMany(Class, { foreignKey: "termId" });
+Term.hasMany(Class, { foreignKey: { allowNull: false } });
+Class.belongsTo(Term);
 
 export default Class;

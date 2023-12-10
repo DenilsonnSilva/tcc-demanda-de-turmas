@@ -3,11 +3,11 @@ import { Op } from "sequelize";
 
 const create = async (req, res) => {
   try {
-    const { name, studentsQuantity, supportsMaterials } = req.body;
+    const { name, capacity, supportsMaterials } = req.body;
 
     const newClassroom = await Classroom.create({
       name,
-      studentsQuantity,
+      capacity,
       supportsMaterials,
     });
 
@@ -23,7 +23,7 @@ const getAvailable = async (req, res) => {
     const { estudantes, materiais } = req.query;
 
     const whereClause = {
-      students_quantity: {
+      capacity: {
         [Op.gte]: estudantes,
       },
     };
@@ -74,12 +74,12 @@ const getOne = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { classroomId } = req.params;
-    const { name } = req.body;
+    const { name, capacity, supportsMaterials } = req.body;
 
     const classroom = await Classroom.findByPk(classroomId);
 
     if (classroom) {
-      await classroom.update({ name });
+      await classroom.update({ name, capacity, supportsMaterials });
 
       return res.status(200).json(classroom);
     } else {

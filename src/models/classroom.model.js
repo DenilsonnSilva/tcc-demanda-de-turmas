@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../services/database.js";
 
 const Classroom = sequelize.define(
-  "Classroom",
+  "classroom",
   {
     name: {
       type: DataTypes.STRING,
@@ -11,11 +11,11 @@ const Classroom = sequelize.define(
         notEmpty: { msg: "Nome não pode ser vazio." },
       },
     },
-    studentsQuantity: {
+    capacity: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        notEmpty: { msg: "Quantidade de alunos não pode ser vazia." },
+        notEmpty: { msg: "Capacidade de alunos não pode ser vazia." },
       },
     },
     supportsMaterials: {

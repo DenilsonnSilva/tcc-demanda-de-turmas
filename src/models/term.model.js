@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../services/database.js";
 
 const Term = sequelize.define(
-  "Term",
+  "term",
   {
     name: {
       type: DataTypes.STRING,

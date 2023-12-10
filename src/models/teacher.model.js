@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../services/database.js";
 
 const Teacher = sequelize.define(
-  "Teacher",
+  "teacher",
   {
     name: {
       type: DataTypes.STRING,
