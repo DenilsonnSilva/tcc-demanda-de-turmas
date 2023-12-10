@@ -6,7 +6,13 @@ const router = Router();
 
 router
   .route("/api/sala")
-  .get(UserAuthentication, classroomController.getAll)
+  .get(UserAuthentication, (req, res, next) => {
+    if (Object.keys(req.query).length === 0) {
+      classroomController.getAll(req, res, next);
+    } else {
+      classroomController.getAvailable(req, res, next);
+    }
+  })
   .post(UserAuthentication, classroomController.create);
 
 router

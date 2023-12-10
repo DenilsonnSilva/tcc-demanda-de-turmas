@@ -11,6 +11,17 @@ const Classroom = sequelize.define(
         notEmpty: { msg: "Nome não pode ser vazio." },
       },
     },
+    studentsQuantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: { msg: "Quantidade de alunos não pode ser vazia." },
+      },
+    },
+    supportsMaterials: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   },
   { underscored: true }
 );

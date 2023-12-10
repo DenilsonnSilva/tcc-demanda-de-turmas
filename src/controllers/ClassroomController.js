@@ -1,12 +1,42 @@
 import Classroom from "../models/classroom.model.js";
+import { Op } from "sequelize";
 
 const create = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, studentsQuantity, supportsMaterials } = req.body;
 
-    const newClassroom = await Classroom.create({ name });
+    const newClassroom = await Classroom.create({
+      name,
+      studentsQuantity,
+      supportsMaterials,
+    });
 
     return res.status(201).json(newClassroom);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+const getAvailable = async (req, res) => {
+  try {
+    const { students, materials } = req.query;
+
+    const whereClause = {
+      students_quantity: {
+        [Op.gte]: students,
+      },
+    };
+
+    if (materials === "true") {
+      whereClause.supports_materials = true;
+    }
+
+    const classrooms = await Classroom.findAll({
+      where: whereClause,
+    });
+    
+    res.status(200).json(classrooms);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: error.message });
@@ -80,4 +110,4 @@ const dеlete = async (req, res) => {
   }
 };
 
-export default { create, getAll, getOne, update, dеlete };
+export default { create, getAvailable, getAll, getOne, update, dеlete };
