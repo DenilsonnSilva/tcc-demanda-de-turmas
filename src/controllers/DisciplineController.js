@@ -31,7 +31,7 @@ const getOne = async (req, res) => {
     const discipline = await Discipline.findByPk(disciplineId);
 
     if (discipline) {
-      return res.status(200).json({ discipline });
+      return res.status(200).json(discipline);
     } else {
       return res.status(404).json({ message: "Disciplina não encontrada." });
     }

@@ -31,7 +31,7 @@ const getOne = async (req, res) => {
     const teacher = await Teacher.findByPk(teacherId);
 
     if (teacher) {
-      return res.status(200).json({ course: teacher });
+      return res.status(200).json(teacher);
     } else {
       return res.status(404).json({
         message: "Professor(a) não encontrado(a).",

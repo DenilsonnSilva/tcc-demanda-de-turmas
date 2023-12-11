@@ -31,7 +31,7 @@ const getOne = async (req, res) => {
     const term = await Term.findByPk(termId);
 
     if (term) {
-      return res.status(200).json({ term });
+      return res.status(200).json(term);
     } else {
       return res.status(404).json({ message: "Período não encontrado." });
     }

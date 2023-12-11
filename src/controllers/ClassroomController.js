@@ -61,7 +61,7 @@ const getOne = async (req, res) => {
     const classroom = await Classroom.findByPk(classroomId);
 
     if (classroom) {
-      return res.status(200).json({ classroom });
+      return res.status(200).json(classroom);
     } else {
       return res.status(404).json({ message: "Sala não encontrada." });
     }

@@ -37,7 +37,7 @@ const getOne = async (req, res) => {
     const сlass = await Class.findByPk(classId);
 
     if (сlass) {
-      return res.status(200).json({ сlass });
+      return res.status(200).json(сlass);
     } else {
       return res.status(404).json({ message: "Turma não encontrada." });
     }

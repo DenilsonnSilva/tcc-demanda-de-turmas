@@ -31,7 +31,7 @@ const getOne = async (req, res) => {
     const course = await Course.findByPk(courseId);
 
     if (course) {
-      return res.status(200).json({ course });
+      return res.status(200).json(course);
     } else {
       return res.status(404).json({ message: "Curso não encontrado." });
     }
